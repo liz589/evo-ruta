@@ -29,4 +29,4 @@ Abre [http://localhost:4200](http://localhost:4200/).
 
 ## Aplicación publicada
 
-Pendiente de publicación en Vercel.
+[Abrir EvoRuta](https://evo-ruta.vercel.app/)
