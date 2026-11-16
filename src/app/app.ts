@@ -1,7 +1,8 @@
+import { BuscadorPokemon } from './buscador-pokemon/buscador-pokemon';
 import { Component, signal } from '@angular/core';
 
 @Component({
-  imports: [],
+  imports: [BuscadorPokemon],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

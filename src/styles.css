@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  --morado: #5530a7;
+  --morado-oscuro: #352065;
+  --borde: #dfd5f0;
+  --texto: #241b36;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--texto);
+  background: linear-gradient(135deg, #eee6ff, #faf8ff);
+  line-height: 1.5;
+}
+
+.evo-ruta {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.evo-ruta > h1 {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1.25rem;
+  border-left: 0.4rem solid #ffd36b;
+  border-radius: 1rem;
+  background: var(--morado-oscuro);
+  color: #fff;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}

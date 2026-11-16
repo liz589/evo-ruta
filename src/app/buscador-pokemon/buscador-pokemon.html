@@ -1,0 +1,70 @@
+<form (submit)="buscar(campoNombre.value, $event)">
+    <label for="nombre-pokemon">Nombre del Pokémon</label>
+    <input id="nombre-pokemon" #campoNombre type="text" placeholder="Ej. eevee" required>
+    <button type="submit" [disabled]="cargando()">Buscar</button>
+</form>
+
+@if (cargando()) {
+<p role="status">Buscando Pokémon…</p>
+}
+
+@if (error()) {
+<p role="alert">{{ error() }}</p>
+}
+
+@if (pokemon(); as ficha) {
+<section>
+    <h2>{{ ficha.name }}</h2>
+
+    @if (ficha.sprites.front_default; as imagen) {
+    <img [src]="imagen" [alt]="'Imagen de ' + ficha.name" width="96" height="96">
+    }
+
+    <h3>Tipos</h3>
+    <ul class="tipos">
+        @for (entrada of ficha.types; track entrada.type.name) {
+        <li>{{ entrada.type.name }}</li>
+        }
+    </ul>
+    @if (especie()) {
+    <h3>Descripción</h3>
+    <p>{{ descripcion() }}</p>
+    }
+    @if (especie() && !cargando() && !error()) {
+  <h3>Evoluciones de la especie</h3>
+
+  @if (rutas().length > 0) {
+    <label for="destino-evolucion">Elige una evolución</label>
+    <select id="destino-evolucion" #selector
+      (change)="destinoElegido.set(selector.value)">
+      <option value="">Selecciona un destino</option>
+
+      @for (ruta of rutas(); track ruta.destino) {
+        <option [value]="ruta.destino">{{ ruta.destino }}</option>
+      }
+    </select>
+
+    @if (rutaSeleccionada(); as ruta) {
+      <p class="ruta-evolutiva">
+        @for (paso of ruta.pasos; track paso.species.name) {
+          <span>{{ $first ? '' : ' → ' }}{{ paso.species.name }}</span>
+        }
+      </p>
+      @for (paso of ruta.pasos.slice(1); track paso.species.name) {
+  <h4>Requisitos para {{ paso.species.name }}</h4>
+
+  <ul>
+    @for (detalle of paso.evolution_details; track $index) {
+      <li>{{ describirRequisito(detalle) }}</li>
+    } @empty {
+      <li>Requisitos sin registrar en PokéAPI.</li>
+    }
+  </ul>
+}
+    }
+  } @else {
+    <p>PokéAPI no registra evoluciones posteriores para esta especie.</p>
+  }
+}
+</section>
+}

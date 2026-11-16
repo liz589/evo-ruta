@@ -1,0 +1,140 @@
+:host {
+  display: block;
+}
+
+form,
+section {
+  padding: 1.25rem;
+  border: 1px solid var(--borde);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1.5rem #35206512;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+form label {
+  grid-column: 1 / -1;
+  font-weight: 700;
+}
+
+section label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.65rem;
+  font: inherit;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #8b7aa6;
+  background: #fff;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: var(--morado);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--morado-oscuro);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--morado);
+  outline-offset: 2px;
+}
+
+section {
+  overflow-wrap: anywhere;
+}
+
+section h2 {
+  margin: 0 0 0.75rem;
+  color: var(--morado-oscuro);
+  text-transform: capitalize;
+}
+
+section img {
+  display: block;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
+  background: #f4efff;
+  object-fit: contain;
+  image-rendering: pixelated;
+  margin-inline: auto;
+}
+
+.tipos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+
+.tipos li {
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  background: #eee6ff;
+  color: var(--morado-oscuro);
+  font-weight: 600;
+}
+
+.ruta-evolutiva {
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--morado);
+  border-radius: 0.5rem;
+  background: #f4efff;
+  font-weight: 700;
+}
+
+[role="status"],
+[role="alert"] {
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+}
+
+[role="status"] {
+  background: #eee6ff;
+}
+
+[role="alert"] {
+  background: #ffe9ee;
+  color: #8c1735;
+}
+
+@media (max-width: 480px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+}
